@@ -1,19 +1,21 @@
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
+  Template.body.helpers({
+  comments: function () {
+    return [{
+      name: 'Bob',
+      text: 'Bacon ipsum dolor amet leberkas tongue ham hock cow brisket capicola fatback corned beef tail ground round drumstick pig. Short ribs beef ribs shankle spare ribs jowl andouille pork doner sausage ball tip strip steak. Kielbasa jowl meatball bacon strip steak porchetta, beef chuck tongue andouille sausage filet mignon tail.',
+      createdAt: new Date()
+    }, {
+      name: 'Billy',
+      text: 'A much shorter message.',
+      createdAt: new Date()
+    }, {
+      name: 'Bernie',
+      text: 'Bacon ipsum dolor amet leberkas tongue ham hock cow brisket capicola fatback corned beef tail ground round drumstick pig. Short ribs beef ribs shankle spare ribs jowl andouille pork doner sausage ball tip strip steak. Kielbasa jowl meatball bacon strip steak porchetta, beef chuck tongue andouille sausage filet mignon tail.',
+      createdAt: new Date()
+    }];
+  }
+});
 }
 
 if (Meteor.isServer) {
