@@ -16,6 +16,13 @@ if (Meteor.isClient) {
     }];
   }
 });
+
+  Template.comment.helpers({
+    time: function() {
+      return moment(this.createdAt).format('MMMM D, YYYY');
+    }
+  });
+
 }
 
 if (Meteor.isServer) {
