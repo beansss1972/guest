@@ -31,16 +31,19 @@
 		  </div>
 		  
 		  <div class="form-group"> 
-		    <div class="col-sm-offset-2 col-sm-10">
+		    <div class="col-xs-offset-2 col-xs-10">
 		      <button type="submit" id="submit" class="btn btn-default">Submit</button>
+		      <hr>
 		    </div>
+
 		  </div>
-		  <hr>
+
 		</form>    	  
 
     </div>
   </div>
 </div>
+
 	<div class="container comments">
 	  	{{#each comments}}
 	  		{{> comment}}
@@ -52,6 +55,9 @@
 <template name="comment">
   <div class="row comment">
   	<div class="col-xs-offset-2 col-xs-10">
+
+  	<button type="button" class="delete-comment close"><span class="glyphicon glyphicon-trash"></span></button>
+
 	  	<p class="time small"><span class="text lead">"{{ name }}" </span>{{ time }}</p>
 	  	<p> {{ text }} </p>
 	  	<hr>

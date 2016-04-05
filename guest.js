@@ -33,6 +33,12 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.comment.events({
+  'click .delete-comment': function(event) {
+    Comments.remove(this._id);
+  }
+});
+
 }
 
 if (Meteor.isServer) {
