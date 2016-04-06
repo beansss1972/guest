@@ -19,7 +19,7 @@
 		  <div class="form-group">
 		    <label class="control-label col-xs-2" for="name">Name:</label>
 		    <div class="col-xs-10">
-		      <input type="text" class="form-control" id="name" placeholder="Enter name">
+		      <input required type="text" class="form-control" id="name" placeholder="Enter name">
 		    </div>
 		  </div>
 
@@ -33,9 +33,8 @@
 		  <div class="form-group"> 
 		    <div class="col-xs-offset-2 col-xs-10">
 		      <button type="submit" id="submit" class="btn btn-default">Submit</button>
-		      <hr>
+		      <hr>  <!--TODO this line is too high above first comment-->
 		    </div>
-
 		  </div>
 
 		</form>    	  
@@ -55,9 +54,13 @@
 <template name="comment">
   <div class="row comment">
   	<div class="col-xs-offset-2 col-xs-10">
-
-  	<button type="button" class="delete-comment close"><span class="glyphicon glyphicon-trash"></span></button>
-
+	<!--TODO what is class 'close'?-->
+	
+  	<button type="button" class="close delete-comment">
+  	<span class="glyphicon glyphicon-trash"></span></button> 
+  	<button type="button" class="close edit-comment">
+  	<span class="glyphicon glyphicon-edit"></span></button>
+ 
 	  	<p class="time small"><span class="text lead">"{{ name }}" </span>{{ time }}</p>
 	  	<p> {{ text }} </p>
 	  	<hr>
