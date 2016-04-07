@@ -13,10 +13,10 @@ if (Meteor.isClient) {
     'submit .new-comment': function(event) {
       event.preventDefault();
 
-if(event.target.comment.value === ''||
-    event.target.name.value === ''){
-  return FlashMessages.sendWarning('Both fields are required.')
-}
+      if(event.target.comment.value === ''||
+          event.target.name.value === ''){
+        return FlashMessages.sendWarning('Both fields are required.')
+      }
 
       Comments.insert({
         text: event.target.comment.value,
@@ -26,6 +26,7 @@ if(event.target.comment.value === ''||
 
       $('.new-comment').trigger("reset");
       event.target.submit.blur();
+      FlashMessages.sendInfo('Comment posted!')
 
     }
   });
@@ -40,6 +41,7 @@ if(event.target.comment.value === ''||
   Template.comment.events({
   'click .delete-comment': function(event) {
     Comments.remove(this._id);
+    FlashMessages.sendError('Comment deleted!')
   }
 });
 
