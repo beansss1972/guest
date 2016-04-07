@@ -11,6 +11,15 @@
     </div>
   </div>
 
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        {{> flashMessages}}
+      </div>
+    </div>
+</div>
+
+
   <div class="container">
   	<div class="row">
     	<!-- <div class="col-xs-12"> -->
@@ -19,14 +28,14 @@
 		  <div class="form-group">
 		    <label class="control-label col-xs-2" for="name">Name:</label>
 		    <div class="col-xs-10">
-		      <input type="text" class="form-control" id="name" placeholder="Enter name" required="true">
+		      <input type="text" class="form-control" id="name" placeholder="Enter name">
 		    </div>
 		  </div>
 
 		  <div class="form-group">
 			<label class="control-label col-xs-2" for="comment">Comment:</label>
 			<div class="col-xs-10">
-				<textarea class="form-control" rows="5" id="comment" placeholder="Your comments" required="true"></textarea>
+				<textarea class="form-control" rows="5" id="comment" placeholder="Your comments"></textarea>
 			</div>		    
 		  </div>
 		  

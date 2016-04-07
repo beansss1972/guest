@@ -13,6 +13,11 @@ if (Meteor.isClient) {
     'submit .new-comment': function(event) {
       event.preventDefault();
 
+if(event.target.comment.value === ''||
+    event.target.name.value === ''){
+  return FlashMessages.sendWarning('Both fields are required.')
+}
+
       Comments.insert({
         text: event.target.comment.value,
         CreatedAt: new Date(),
