@@ -12,6 +12,7 @@
   </div>
 
 <div class="container">
+<!-- TODO padding is weird on these messages -->
     <div class="row">
       <div class="col-xs-12">
         {{> flashMessages}}
@@ -32,7 +33,7 @@
 		    </div>
 		  </div>
 
-		  <div class="form-group">
+		  <div class="form-group row">
 			<label class="control-label col-xs-2" for="comment">Comment:</label>
 			<div class="col-xs-10">
 				<textarea class="form-control" rows="5" id="comment" placeholder="Your comments"></textarea>
@@ -42,7 +43,7 @@
 		  <div class="form-group btn-submit"> 
 		    <div class="col-xs-offset-2 col-xs-10">
 		      <button type="submit" id="submit" class="btn btn-default">Submit</button>
-		      <hr> <!--  TODO This hr is a little longer than others -->
+		      <hr> <!--  TODO This hr is a little longer than others - padding??-->
 		    </div>
 		  </div>
 
@@ -70,7 +71,7 @@
   	<button type="button" class="close edit-comment">
   	<span class="glyphicon glyphicon-edit"></span></button>
  
-	  	<p class="small"><span class="text lead">"{{ name }}" </span>{{ time }}</p>
+	  	<p class="time small"><span class="text lead">"{{ name }}" </span>{{ time }}</p>
 	  	<p> {{ text }} </p>
 	  	<hr>
   	</div>

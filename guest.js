@@ -15,7 +15,9 @@ if (Meteor.isClient) {
 
       if(event.target.comment.value === ''||
           event.target.name.value === ''){
-        return FlashMessages.sendWarning('Both fields are required.')
+        // TODO is this blur in the right place? and repetative?
+        event.target.submit.blur();
+        return FlashMessages.sendWarning('Both fields are required.');
       }
 
       Comments.insert({
