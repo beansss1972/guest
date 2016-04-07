@@ -19,7 +19,6 @@ if (Meteor.isClient) {
         name: event.target.name.value
     });
 
-      //TODO button stays 'clicked'
       $('.new-comment').trigger("reset");
       event.target.submit.blur();
 

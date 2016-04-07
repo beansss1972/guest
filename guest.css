@@ -6,3 +6,7 @@ button.close {
   background: transparent;
   border: 0;
 }
+
+.btn-submit {
+	margin-bottom: 0px;
+}
