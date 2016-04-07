@@ -1,10 +1,10 @@
-Comments = new Mongo.Collection('comments')
+Comments = new Mongo.Collection('comments');
 
 if (Meteor.isClient) {
   Template.body.helpers({
   comments: function () {
     return Comments.find({}, {
-      sort: { createdAt: -1 }
+      sort: { CreatedAt: -1 }
     });
   }
 });
@@ -34,9 +34,10 @@ if (Meteor.isClient) {
 
   Template.comment.helpers({
     time: function() {
-      return moment(this.createdAt).format('MMMM D, YYYY');
+      return moment(this.CreatedAt).format('MMMM D, YYYY, hh:mm a');
     }
   });
+
 
   Template.comment.events({
   'click .delete-comment': function(event) {
