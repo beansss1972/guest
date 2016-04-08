@@ -8,6 +8,8 @@
 	     <div class="navbar-header">
 	        <a href="#" class="navbar-brand">Guest Book</a>
 	    </div>
+	    <!-- TODO ideally this login is for admins - how do i make creating acct and / or logging in exclusive to limited (or one) user(s)? -->
+	    <!-- TODO - something about adding the login box shoved the title "guestbook" to the left, didn't it? -->
 	    <div class="pull-right">
 	  		<p>{{> loginButtons align="right"}}</p>
 	  	</div>
@@ -70,13 +72,12 @@
 <template name="comment">
   <div class="row comment">
   	<div class="col-xs-offset-2 col-xs-10">
-	<!--TODO what is class 'close'?-->
-	
+	{{#if currentUser}}
   	<button type="button" class="close delete-comment">
   	<span class="glyphicon glyphicon-trash"></span></button>
   	<button type="button" class="close edit-comment">
   	<span class="glyphicon glyphicon-edit"></span></button>
- 
+ 	{{/if}}
 	  	<p class="time small"><span class="text lead">"{{ name }}" </span>{{ time }}</p>
 	  	<p> {{ text }} </p>
 	  	<hr>
