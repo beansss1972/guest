@@ -10,3 +10,7 @@ button.close {
 .btn-submit {
 	margin-bottom: 0px;
 }
+
+#login-buttons {
+	margin-top: 18px; 
+}
