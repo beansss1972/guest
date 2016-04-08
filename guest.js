@@ -15,7 +15,7 @@ if (Meteor.isClient) {
 
       if(event.target.comment.value === ''||
           event.target.name.value === ''){
-        // TODO is this blur in the right place? and repetative?
+        // TODO is this blur in the right place? and repetitive?
         event.target.submit.blur();
         return FlashMessages.sendWarning('Both fields are required.');
       }
@@ -45,8 +45,13 @@ if (Meteor.isClient) {
   'click .delete-comment': function(event) {
     Comments.remove(this._id);
     FlashMessages.sendError('Comment deleted!')
+  },
+
+  'click .edit-comment': function(event) {
+    console.log(this);
   }
 });
+
 
 }
 
