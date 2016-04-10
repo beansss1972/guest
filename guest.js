@@ -15,7 +15,6 @@ if (Meteor.isClient) {
 
       if(event.target.comment.value === ''||
           event.target.name.value === ''){
-        // TODO is this blur in the right place? and repetitive?
         event.target.submit.blur();
         return FlashMessages.sendWarning('Both fields are required.');
       }
@@ -37,7 +36,7 @@ if (Meteor.isClient) {
   Template.comment.helpers({
     time: function() {
       return moment(this.CreatedAt).format('MMMM D, YYYY, hh:mm a');
-    }
+    },
   });
 
 
@@ -49,6 +48,7 @@ if (Meteor.isClient) {
 
   'click .edit-comment': function(event) {
     console.log(this);
+     
   }
 });
 

@@ -14,3 +14,7 @@ button.close {
 #login-buttons {
 	margin-top: 18px; 
 }
+
+button:focus {
+	outline:0;
+}

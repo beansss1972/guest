@@ -8,8 +8,7 @@
 	     <div class="navbar-header">
 	        <a href="#" class="navbar-brand">Guest Book</a>
 	    </div>
-	    <!-- TODO ideally this login is for admins - should I or can I make creating acct and / or logging in exclusive to limited (or one) user(s)? -->
-	    <!-- TODO - something about adding the login box shoved the title "guestbook" to the left, didn't it? -->
+	    
 	    <div class="pull-right">
 	  		<p>{{> loginButtons align="right"}}</p>
 	  	</div>
@@ -18,9 +17,8 @@
 
 
 <div class="container">
-<!-- TODO padding is weird on these messages -->
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-offset-2 col-xs-10">
         {{> flashMessages}}
       </div>
     </div>
@@ -28,11 +26,9 @@
 
 
   <div class="container">
-  	<div class="row">
-    	<!-- <div class="col-xs-12"> -->
-
+  	
 		<form class="form-horizontal new-comment" role="form">
-		  <div class="form-group">
+		  <div class="form-group row">
 		    <label class="control-label col-xs-2" for="name">Name:</label>
 		    <div class="col-xs-10">
 		      <input type="text" class="form-control" id="name" placeholder="Enter name">
@@ -46,26 +42,76 @@
 			</div>		    
 		  </div>
 		  
-		  <!-- TODO added btn-submit class to force padding to go away but seems wrong way to fix -->
-		  <div class="form-group btn-submit"> 
+		  
+		  <div class="form-group row btn-submit"> 
 		    <div class="col-xs-offset-2 col-xs-10">
 		      <button type="submit" id="submit" class="btn btn-default">Submit</button>
-		      <hr> <!--  TODO This hr is a little longer than others - padding??-->
-		      <!-- TODO if fields full, hitting enter from name field submits but enter from comment box does not - should it be one way or the other? -->
+		      <hr> 
 		    </div>
 		  </div>
 
 		</form>    	  
 
-    <!-- </div> -->
   </div>
-</div>
 
 	<div class="container comments">
 	  	{{#each comments}}
 	  		{{> comment}}
 		{{/each}}
 	</div>
+
+<!-- modal for editing posts	 -->
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit</h4>
+      </div>
+      <div class="modal-body">
+        <!-- form begins here -->
+		<!-- <form class="form-horizontal new-comment" role="form"> -->
+		<form class="form-horizontal" role="form">
+
+		  <div class="form-group row">
+		    <label class="control-label col-xs-2" for="name">Name:</label>
+		    <div class="col-xs-10">
+		      <input type="text" class="form-control" id="name" placeholder="Enter name">
+		    </div>
+		  </div>
+
+		  <div class="form-group row">
+			<label class="control-label col-xs-2" for="comment">Comment:</label>
+			<div class="col-xs-10">
+				<textarea class="form-control" rows="5" id="comment" placeholder="Your comments"></textarea>
+			</div>		    
+		  </div>
+		  
+		 
+		  <div class="form-group row btn-submit"> 
+		    <div class="col-xs-offset-2 col-xs-10">
+		      <button type="submit" id="submit" class="btn btn-default">Submit</button>
+		      <hr> 
+		    </div>
+		  </div>
+
+		</form>  
+
+
+		<!-- form ends here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- /.modal -->	
 
 </body>
 
@@ -75,7 +121,7 @@
 	
   	<button type="button" class="close delete-comment">
   	<span class="glyphicon glyphicon-trash"></span></button>
-  	<button type="button" class="close edit-comment">
+  	<button type="button" class="close edit-comment" data-toggle="modal" data-target="#myModal">
   	<span class="glyphicon glyphicon-edit"></span></button>
  
 	  	<p class="time small"><span class="text lead">"{{ name }}" </span>{{ time }}</p>
