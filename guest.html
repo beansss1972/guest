@@ -73,32 +73,8 @@
       </div>
       <div class="modal-body">
         <!-- form begins here -->
-		<!-- <form class="form-horizontal new-comment" role="form"> -->
-		<form class="form-horizontal" role="form">
-
-		  <div class="form-group row">
-		    <label class="control-label col-xs-2" for="name">Name:</label>
-		    <div class="col-xs-10">
-		      <input type="text" class="form-control" id="name" placeholder="Enter name">
-		    </div>
-		  </div>
-
-		  <div class="form-group row">
-			<label class="control-label col-xs-2" for="comment">Comment:</label>
-			<div class="col-xs-10">
-				<textarea class="form-control" rows="5" id="comment" placeholder="Your comments"></textarea>
-			</div>		    
-		  </div>
-		  
-		 
-		  <div class="form-group row btn-submit"> 
-		    <div class="col-xs-offset-2 col-xs-10">
-		      <button type="submit" id="submit" class="btn btn-default">Submit</button>
-		      <hr> 
-		    </div>
-		  </div>
-
-		</form>  
+		
+		{{ >edit }}
 
 
 		<!-- form ends here -->
@@ -129,4 +105,33 @@
 	  	<hr>
   	</div>
   </div>
+</template>
+
+<template name="edit">
+	<form class="form-horizontal" role="form">
+
+	  <div class="form-group row">
+	    <label class="control-label col-xs-2" for="name">Name:</label>
+	    <div class="col-xs-10">
+	      <input type="text" class="form-control" id="name" placeholder="Enter name">
+	    </div>
+	  </div>
+
+	  <div class="form-group row">
+		<label class="control-label col-xs-2" for="comment">Comment:</label>
+		<div class="col-xs-10">
+			<textarea class="form-control" rows="5" id="comment" placeholder="Your comments"></textarea>
+		</div>		    
+	  </div>
+	  
+	 
+	  <div class="form-group row btn-submit"> 
+	    <div class="col-xs-offset-2 col-xs-10">
+	      <button type="submit" id="submit" class="btn btn-default">Submit</button>
+	      <hr> 
+	    </div>
+	  </div>
+
+	</form>  
+
 </template>
