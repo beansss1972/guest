@@ -37,6 +37,9 @@ if (Meteor.isClient) {
     time: function() {
       return moment(this.CreatedAt).format('MMMM D, YYYY, hh:mm a');
     },
+    theId: function(){
+      return this._id;
+    }
   });
 
 
