@@ -42,6 +42,15 @@ if (Meteor.isClient) {
   } 
   });
 
+  var saveItem = function(){
+    var editItem = {
+      name: $("#editName").val(),
+      text: $("#editItemComment").val()
+    }
+
+    Comments.update(Session.get('editComment'), {$set: editItem});
+    Session.set('editComment', null);
+  }
 
   Template.comment.events({
   'click .delete-comment': function(event) {
@@ -50,25 +59,31 @@ if (Meteor.isClient) {
   },
 
   'click .edit-comment': function(event) {
-    console.log(this);
-    console.log(this.name);
-    console.log(this.text);
-    console.log(this._id);
     Session.set('editComment', this._id);
+  },
+
+  'click .cancelItem': function(event){
+    event.preventDefault();
+    Session.set('editComment', null);
+  },
+
+  'click .saveItem': function(event){
+    event.preventDefault();
+    saveItem();
+  },
+
+  'keydown': function(event){
+    if(event.keyCode === 13){
+      saveItem();
+    }
+    else if(event.keyCode === 27){
+      console.log('pressed esc');
+      Session.set('editComment', null);
+    }
   }
 });
 
-// Template.edit.helpers({
-//     theId: function(){
-//       return this._id;
-//     },
-//     theName: function(){
-//       return this.name;
-//     },
-//     theText: function(){
-//       return this.text;
-//     }
-//   });
+
 
 }
 
