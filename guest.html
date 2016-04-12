@@ -3,31 +3,31 @@
 </head>
 
 <body>
-  <div class="navbar navbar-default">
-    <div class="container">
-	     <div class="navbar-header">
-	        <a href="#" class="navbar-brand">Guest Book</a>
+	<div class="navbar navbar-default">
+		<div class="container">
+		     <div class="navbar-header">
+		        <a href="#" class="navbar-brand">Guest Book</a>
+		    </div>
+		    
+		    <div class="pull-right">
+		  		<p>{{> loginButtons align="right"}}</p>
+		  	</div>
+		</div>
+	</div>
+
+	<div class="container">
+	    <div class="row">
+	      <div class="col-xs-offset-2 col-xs-10">
+	        <!-- for errors and warnings -->
+	        {{> flashMessages}}
+	      </div>
 	    </div>
-	    
-	    <div class="pull-right">
-	  		<p>{{> loginButtons align="right"}}</p>
-	  	</div>
-    </div>
-  </div>
+	</div>
 
-
-<div class="container">
-    <div class="row">
-      <div class="col-xs-offset-2 col-xs-10">
-        {{> flashMessages}}
-      </div>
-    </div>
-</div>
-
-
-  <div class="container">
-  	
+	<div class="container">
 		<form class="form-horizontal new-comment" role="form">
+		
+		<!-- name -->
 		  <div class="form-group row">
 		    <label class="control-label col-xs-2" for="name">Name:</label>
 		    <div class="col-xs-10">
@@ -35,14 +35,15 @@
 		    </div>
 		  </div>
 
+	  	<!-- comment -->
 		  <div class="form-group row">
 			<label class="control-label col-xs-2" for="comment">Comment:</label>
 			<div class="col-xs-10">
 				<textarea class="form-control" rows="5" id="comment" placeholder="Your comments"></textarea>
 			</div>		    
 		  </div>
-		  
-		  
+
+		  <!-- submit button -->
 		  <div class="form-group row btn-submit"> 
 		    <div class="col-xs-offset-2 col-xs-10">
 		      <button type="submit" id="submit" class="btn btn-default">Submit</button>
@@ -52,7 +53,7 @@
 
 		</form>    	  
 
-  </div>
+	</div>
 
 	<div class="container comments">
 	  	{{#each comments}}
@@ -60,110 +61,49 @@
 		{{/each}}
 	</div>
 
-<!-- modal for editing posts	 -->
-<!-- Modal -->
-<!-- <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
- -->
-    <!-- Modal content-->
-    <!-- <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit</h4>
-      </div>
-      <div class="modal-body"> -->
-        <!-- form begins here -->
-	<!-- <form class="form-horizontal" role="form">
+</body>
 
+<template name="comment">
+{{#if editing}} 
+<!-- show edit form in place of comment -->
+  	<form class="form-horizontal edit-form" role="form">
 	  <div class="form-group row">
-	    <label class="control-label col-xs-2" for="name">Name:</label>
-	    <div class="col-xs-10">
-	      <input type="text" class="form-control" id="name" placeholder="Enter name">
+	   
+	    <div class="col-xs-offset-2 col-xs-10">
+	      <input type="text" class="form-control" id="editName" value="{{name}}">
 	    </div>
 	  </div>
 
 	  <div class="form-group row">
-		<label class="control-label col-xs-2" for="comment">Comment:</label>
-		<div class="col-xs-10">
-			<textarea class="form-control" rows="5" id="comment" placeholder="Your comments"></textarea>
+		<div class="col-xs-offset-2 col-xs-10">
+			<textarea class="form-control" rows="5" id="editItemComment" value="{{text}}"></textarea>
 		</div>		    
 	  </div>
-	  
-	 
+  
 	  <div class="form-group row btn-submit"> 
 	    <div class="col-xs-offset-2 col-xs-10">
-	      <button type="submit" id="submit" class="btn btn-default">Submit</button>
+	      <button class="btn btn-default saveItem">Save</button>
+	      <button class="btn btn-default cancelItem">Cancel</button>
 	      <hr> 
 	    </div>
 	  </div>
 
-	</form>  --> 		
-		
+	</form>  
 
-
-		<!-- form ends here -->
-      <!-- </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div> -->
-
-<!-- /.modal -->	
-
-</body>
-
-<template name="comment">
-  {{#if editing}}
-  <form class="form-horizontal edit-form" role="form">
-  <div class="form-group row">
-   
-    <div class="col-xs-offset-2 col-xs-10">
-      <input type="text" class="form-control" id="editName" value="{{name}}">
-    </div>
-  </div>
-
-  <div class="form-group row">
-
-	<div class="col-xs-offset-2 col-xs-10">
-		<textarea class="form-control" rows="5" id="editItemComment" value="{{text}}"></textarea>
-	</div>		    
-  </div>
-  
-  
-  <div class="form-group row btn-submit"> 
-    <div class="col-xs-offset-2 col-xs-10">
-      <button class="btn btn-default saveItem">Save</button>
-      <button class="btn btn-default cancelItem">Cancel</button>
-      <hr> 
-    </div>
-  </div>
-
-</form>  
-
-
-  {{else}}
-  <div class="row comment">
-  	<div class="col-xs-offset-2 col-xs-10">
-	
-	  	<button type="button" class="close delete-comment">
-	  	<span class="glyphicon glyphicon-trash"></span></button>
-	  	<!-- <button type="button" class="close edit-comment" data-toggle="modal" data-target="#myModal"> -->
-		<button type="button" class="close edit-comment">	
-	  	<span class="glyphicon glyphicon-edit"></span></button>
-	  	
-		  	<p class="time small"><span class="text lead">"{{ name }}" </span>{{ time }}</p>
-		  	<p> {{ text }} </p>
-		  	<hr>
+{{else}}
+<!-- show comments -->
+  	<div class="row comment">
+	  	<div class="col-xs-offset-2 col-xs-10">
+		  	<!-- edit and delete buttons -->
+		  	<button type="button" class="close delete-comment">
+		  	<span class="glyphicon glyphicon-trash"></span></button>
+			<button type="button" class="close edit-comment">	
+		  	<span class="glyphicon glyphicon-edit"></span></button>
+		  	
+			  	<p class="time small"><span class="text lead">"{{ name }}" </span>{{ time }}</p>
+			  	<p> {{ text }} </p>
+			  	<hr>
+	  	</div>
   	</div>
-  </div>
   {{/if}}
 </template>
-
-<!-- <template name="edit">
-	
-
-</template>
- -->
