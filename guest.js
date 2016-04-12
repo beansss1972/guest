@@ -36,9 +36,6 @@ if (Meteor.isClient) {
   Template.comment.helpers({
     time: function() {
       return moment(this.CreatedAt).format('MMMM D, YYYY, hh:mm a');
-    },
-    theId: function(){
-      return this._id;
     }
   });
 
@@ -51,10 +48,24 @@ if (Meteor.isClient) {
 
   'click .edit-comment': function(event) {
     console.log(this);
+    console.log(this.name);
+    console.log(this.text);
+    console.log(this._id);
      
   }
 });
 
+// Template.edit.helpers({
+//     theId: function(){
+//       return this._id;
+//     },
+//     theName: function(){
+//       return this.name;
+//     },
+//     theText: function(){
+//       return this.text;
+//     }
+//   });
 
 }
 
