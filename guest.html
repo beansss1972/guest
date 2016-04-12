@@ -62,18 +62,18 @@
 
 <!-- modal for editing posts	 -->
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<!-- <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
+ -->
     <!-- Modal content-->
-    <div class="modal-content">
+    <!-- <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Edit</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body"> -->
         <!-- form begins here -->
-	<form class="form-horizontal" role="form">
+	<!-- <form class="form-horizontal" role="form">
 
 	  <div class="form-group row">
 	    <label class="control-label col-xs-2" for="name">Name:</label>
@@ -97,38 +97,68 @@
 	    </div>
 	  </div>
 
-	</form>  		
+	</form>  --> 		
 		
 
 
 		<!-- form ends here -->
-      </div>
+      <!-- </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 
   </div>
-</div>
+</div> -->
 
 <!-- /.modal -->	
 
 </body>
 
 <template name="comment">
+  {{#if editing}}
+  <form class="form-horizontal" role="form">
+  <div class="form-group row">
+   
+    <div class="col-xs-offset-2 col-xs-10">
+      <input type="text" class="form-control" id="editItemName">
+    </div>
+  </div>
+
+  <div class="form-group row">
+
+	<div class="col-xs-offset-2 col-xs-10">
+		<textarea class="form-control" rows="5" id="editItemComment"></textarea>
+	</div>		    
+  </div>
+  
+  
+  <div class="form-group row btn-submit"> 
+    <div class="col-xs-offset-2 col-xs-10">
+      <button class="btn btn-default editItem">Submit</button>
+      <hr> 
+    </div>
+  </div>
+
+</form>  
+
+
+  {{else}}
   <div class="row comment">
   	<div class="col-xs-offset-2 col-xs-10">
 	
-  	<button type="button" class="close delete-comment">
-  	<span class="glyphicon glyphicon-trash"></span></button>
-  	<button type="button" class="close edit-comment" data-toggle="modal" data-target="#myModal">
-  	<span class="glyphicon glyphicon-edit"></span></button>
- 
-	  	<p class="time small"><span class="text lead">"{{ name }}" </span>{{ time }}</p>
-	  	<p> {{ text }} </p>
-	  	<hr>
+	  	<button type="button" class="close delete-comment">
+	  	<span class="glyphicon glyphicon-trash"></span></button>
+	  	<!-- <button type="button" class="close edit-comment" data-toggle="modal" data-target="#myModal"> -->
+		<button type="button" class="close edit-comment">	
+	  	<span class="glyphicon glyphicon-edit"></span></button>
+	  	
+		  	<p class="time small"><span class="text lead">"{{ name }}" </span>{{ time }}</p>
+		  	<p> {{ text }} </p>
+		  	<hr>
   	</div>
   </div>
+  {{/if}}
 </template>
 
 <!-- <template name="edit">

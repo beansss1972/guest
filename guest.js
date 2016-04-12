@@ -36,7 +36,10 @@ if (Meteor.isClient) {
   Template.comment.helpers({
     time: function() {
       return moment(this.CreatedAt).format('MMMM D, YYYY, hh:mm a');
-    }
+    },
+    editing: function(){
+    return Session.equals('editComment', this._id);
+  } 
   });
 
 
@@ -51,7 +54,7 @@ if (Meteor.isClient) {
     console.log(this.name);
     console.log(this.text);
     console.log(this._id);
-     
+    Session.set('editComment', this._id);
   }
 });
 
